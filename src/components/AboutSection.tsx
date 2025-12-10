@@ -13,22 +13,34 @@ const AboutSection = () => {
     {
       icon: Shield,
       title: "Strategic Defense",
-      description: "Place your defenses wisely to protect against waves of mutants"
+      description: "Place your defenses wisely to protect against waves of mutants",
+      iconColor: "text-blue-500",
+      badgeColor: "bg-blue-500",
+      badge: "CORE"
     },
     {
       icon: Zap,
       title: "Upgrade & Evolve",
-      description: "Collect resources to upgrade towers and unlock new abilities"
+      description: "Collect resources to upgrade towers and unlock new abilities",
+      iconColor: "text-yellow-500",
+      badgeColor: "bg-yellow-500",
+      badge: "POWER"
     },
     {
       icon: Trophy,
       title: "Climb Leaderboards",
-      description: "Compete with players worldwide for exclusive rewards"
+      description: "Compete with players worldwide for exclusive rewards",
+      iconColor: "text-purple-500",
+      badgeColor: "bg-purple-500",
+      badge: "RANK"
     },
     {
       icon: Coins,
       title: "Earn Rewards",
-      description: "Win prizes and exclusive items as you progress"
+      description: "Win prizes and exclusive items as you progress",
+      iconColor: "text-green-500",
+      badgeColor: "bg-green-500",
+      badge: "EARN"
     }
   ];
 
@@ -97,25 +109,69 @@ const AboutSection = () => {
               </p>
             </motion.div>
 
-            {/* Feature Grid with stagger animation */}
+            {/* Feature Grid with WHITE ANIMATED CARDS */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {features.map((feature, index) => (
                 <motion.div
                   key={feature.title}
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  initial={{ opacity: 0, y: 30, scale: 0.9 }}
+                  animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
                   transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-                  whileHover={{ scale: 1.03, y: -5 }}
-                  className="card-game p-5 group cursor-pointer"
+                  whileHover={{ scale: 1.05, y: -8 }}
+                  className="relative group cursor-pointer"
                 >
-                  <motion.div
-                    whileHover={{ rotate: [0, -10, 10, 0] }}
-                    transition={{ duration: 0.5 }}
-                  >
-                    <feature.icon className="w-10 h-10 text-primary mb-3 group-hover:scale-110 transition-transform" />
-                  </motion.div>
-                  <h3 className="font-bold text-foreground text-lg mb-1">{feature.title}</h3>
-                  <p className="text-muted-foreground text-sm">{feature.description}</p>
+                  {/* White card with shimmer */}
+                  <div className="relative bg-gradient-to-br from-white via-slate-50 to-slate-100 rounded-2xl p-5 shadow-xl border-2 border-white/50 overflow-hidden">
+                    {/* Animated shimmer effect */}
+                    <motion.div
+                      className="absolute inset-0 bg-gradient-to-r from-transparent via-white/60 to-transparent -skew-x-12"
+                      initial={{ x: "-100%" }}
+                      animate={{ x: "200%" }}
+                      transition={{ 
+                        duration: 2, 
+                        repeat: Infinity, 
+                        repeatDelay: 4,
+                        ease: "easeInOut",
+                        delay: index * 0.5 
+                      }}
+                    />
+                    
+                    {/* Glow effect on hover */}
+                    <motion.div 
+                      className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"
+                      style={{
+                        boxShadow: "inset 0 0 30px hsl(195 100% 50% / 0.2), 0 0 40px hsl(195 100% 50% / 0.15)"
+                      }}
+                    />
+                    
+                    <div className="relative z-10">
+                      {/* Badge */}
+                      <motion.span
+                        className={`absolute -top-1 right-2 ${feature.badgeColor} text-[10px] text-white font-bold px-2 py-0.5 rounded-full shadow-lg`}
+                        animate={{ scale: [1, 1.1, 1] }}
+                        transition={{ repeat: Infinity, duration: 2.5, delay: index * 0.2 }}
+                      >
+                        {feature.badge}
+                      </motion.span>
+                      
+                      {/* Icon */}
+                      <motion.div
+                        whileHover={{ rotate: [0, -10, 10, 0], scale: 1.2 }}
+                        transition={{ duration: 0.5 }}
+                        className="mb-3"
+                      >
+                        <motion.div
+                          animate={{ y: [0, -4, 0] }}
+                          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: index * 0.15 }}
+                        >
+                          <feature.icon className={`w-10 h-10 ${feature.iconColor} drop-shadow-md`} strokeWidth={1.5} />
+                        </motion.div>
+                      </motion.div>
+                      
+                      <h3 className="font-bold text-slate-800 text-lg mb-1">{feature.title}</h3>
+                      <p className="text-slate-600 text-sm">{feature.description}</p>
+                    </div>
+                  </div>
                 </motion.div>
               ))}
             </div>

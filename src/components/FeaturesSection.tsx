@@ -13,17 +13,23 @@ const FeaturesSection = () => {
     {
       image: screenshot1,
       title: "Play & Defend",
-      description: "Strategic gameplay with real rewards"
+      description: "Strategic gameplay with real rewards",
+      badge: "ACTION",
+      badgeColor: "bg-red-500"
     },
     {
       image: screenshot2,
       title: "Collect Gems",
-      description: "Earn valuable resources"
+      description: "Earn valuable resources",
+      badge: "GEMS",
+      badgeColor: "bg-purple-500"
     },
     {
       image: screenshot3,
       title: "Complete Quests",
-      description: "Earn rewards with every mission"
+      description: "Earn rewards with every mission",
+      badge: "QUESTS",
+      badgeColor: "bg-green-500"
     }
   ];
 
@@ -68,45 +74,76 @@ const FeaturesSection = () => {
           </p>
         </motion.div>
 
-        {/* Screenshots Carousel with enhanced effects */}
+        {/* Screenshots with WHITE CARD style */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {screenshots.map((item, index) => (
             <motion.div
               key={item.title}
-              initial={{ opacity: 0, y: 50 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              initial={{ opacity: 0, y: 50, scale: 0.9 }}
+              animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
               transition={{ duration: 0.8, delay: index * 0.2 }}
               whileHover={{ scale: 1.05, y: -15 }}
               className="group cursor-pointer"
             >
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-                <motion.img 
-                  src={item.image} 
-                  alt={item.title}
-                  className="w-full aspect-video object-cover"
-                  whileHover={{ scale: 1.1 }}
-                  transition={{ duration: 0.4 }}
-                />
-                
-                {/* Gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300" />
-                
-                {/* Glow effect */}
-                <motion.div 
-                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  style={{
-                    boxShadow: "inset 0 0 40px hsl(45 100% 55% / 0.3)"
+              {/* White card container */}
+              <div className="relative bg-gradient-to-br from-white via-slate-50 to-slate-100 rounded-2xl p-3 shadow-2xl border-2 border-white/50 overflow-hidden">
+                {/* Animated shimmer effect */}
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/70 to-transparent -skew-x-12 z-20 pointer-events-none"
+                  initial={{ x: "-100%" }}
+                  animate={{ x: "200%" }}
+                  transition={{ 
+                    duration: 2.5, 
+                    repeat: Infinity, 
+                    repeatDelay: 5,
+                    ease: "easeInOut",
+                    delay: index * 0.8 
                   }}
                 />
                 
-                {/* Content */}
-                <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                  <h3 className="text-game-subtitle text-xl text-foreground mb-1">
-                    {item.title}
-                  </h3>
-                  <p className="text-foreground/80 text-sm font-medium">
-                    {item.description}
-                  </p>
+                {/* Glow effect on hover */}
+                <motion.div 
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl z-10 pointer-events-none"
+                  style={{
+                    boxShadow: "inset 0 0 40px hsl(45 100% 55% / 0.25), 0 0 50px hsl(45 100% 55% / 0.2)"
+                  }}
+                />
+                
+                {/* Badge */}
+                <motion.span
+                  className={`absolute top-5 right-5 ${item.badgeColor} text-xs text-white font-bold px-3 py-1 rounded-full shadow-lg z-30`}
+                  animate={{ scale: [1, 1.1, 1] }}
+                  transition={{ repeat: Infinity, duration: 2, delay: index * 0.3 }}
+                >
+                  {item.badge}
+                </motion.span>
+                
+                {/* Image */}
+                <div className="relative rounded-xl overflow-hidden">
+                  <motion.img 
+                    src={item.image} 
+                    alt={item.title}
+                    className="w-full aspect-video object-cover"
+                    whileHover={{ scale: 1.08 }}
+                    transition={{ duration: 0.4 }}
+                  />
+                  
+                  {/* Gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent" />
+                  
+                  {/* Content overlay */}
+                  <div className="absolute bottom-0 left-0 right-0 p-4">
+                    <motion.h3 
+                      className="text-game-subtitle text-xl text-white mb-1 drop-shadow-lg"
+                      initial={{ y: 10, opacity: 0.8 }}
+                      whileHover={{ y: 0, opacity: 1 }}
+                    >
+                      {item.title}
+                    </motion.h3>
+                    <p className="text-white/80 text-sm font-medium drop-shadow">
+                      {item.description}
+                    </p>
+                  </div>
                 </div>
               </div>
             </motion.div>
