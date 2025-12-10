@@ -8,11 +8,11 @@ const HeroSection = () => {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24">
       {/* Video Background with gradient overlay */}
       <div className="absolute inset-0 z-0 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-transparent to-background z-10" />
-        <div className="absolute inset-0 bg-sky-dark/30 z-[5]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/40 to-background z-10" />
+        <div className="absolute inset-0 bg-sky-dark/40 z-[5]" />
         <iframe
-          className="absolute top-1/2 left-1/2 min-w-[177.77vh] min-h-[56.25vw] w-auto h-auto -translate-x-1/2 -translate-y-1/2 pointer-events-none scale-125"
-          src="https://www.youtube.com/embed/yrxZhSRiIzY?autoplay=1&mute=1&loop=1&playlist=yrxZhSRiIzY&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&disablekb=1"
+          className="absolute top-1/2 left-1/2 min-w-[177.77vh] min-h-[56.25vw] w-auto h-auto -translate-x-1/2 -translate-y-1/2 pointer-events-none scale-150"
+          src="https://www.youtube.com/embed/yrxZhSRiIzY?autoplay=1&mute=1&loop=1&playlist=yrxZhSRiIzY&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&disablekb=1&iv_load_policy=3&fs=0"
           allow="autoplay; encrypted-media"
           allowFullScreen
           style={{ border: "none" }}
