@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import logo from "@/assets/logo.png";
 import symbolWhite from "@/assets/symbol-white.png";
 
 const Navbar = () => {
@@ -37,24 +36,11 @@ const Navbar = () => {
           </span>
         </motion.a>
 
-        <div className="flex items-center gap-6">
-          <nav className="hidden md:flex items-center gap-6">
-            <NavLink href="#about">About</NavLink>
-            <NavLink href="#features">Features</NavLink>
-            <NavLink href="#rewards">Rewards</NavLink>
-          </nav>
-
-          <motion.a
-            href="https://t.me/Domenation_bot/domenation_time_defenders"
-            target="_blank"
-            rel="noopener noreferrer"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="btn-play text-sm px-6 py-3"
-          >
-            PLAY NOW
-          </motion.a>
-        </div>
+        <nav className="flex items-center gap-6 md:gap-8">
+          <NavLink href="#about">About</NavLink>
+          <NavLink href="#features">Features</NavLink>
+          <NavLink href="#rewards">Rewards</NavLink>
+        </nav>
       </div>
     </motion.nav>
   );
@@ -63,11 +49,16 @@ const Navbar = () => {
 const NavLink = ({ href, children }: { href: string; children: React.ReactNode }) => (
   <motion.a
     href={href}
-    whileHover={{ y: -2 }}
-    className="text-foreground/80 hover:text-primary font-semibold transition-colors relative group"
+    whileHover={{ y: -2, scale: 1.05 }}
+    className="text-foreground/80 hover:text-primary font-bold transition-colors relative group text-sm md:text-base"
   >
     {children}
-    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
+    <motion.span 
+      className="absolute -bottom-1 left-0 h-0.5 bg-primary"
+      initial={{ width: 0 }}
+      whileHover={{ width: "100%" }}
+      transition={{ duration: 0.3 }}
+    />
   </motion.a>
 );
 
