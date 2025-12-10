@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import symbolWhite from "@/assets/symbol-white.png";
+import logo from "@/assets/logo.png";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -28,12 +28,9 @@ const Navbar = () => {
         <motion.a 
           href="#"
           whileHover={{ scale: 1.05 }}
-          className="flex items-center gap-3"
+          className="flex items-center"
         >
-          <img src={symbolWhite} alt="Domenation Symbol" className="w-10 h-10" />
-          <span className="text-game-subtitle text-xl text-foreground hidden sm:block">
-            TIME DEFENDERS
-          </span>
+          <img src={logo} alt="Domenation Time Defenders" className="h-10 md:h-12 w-auto" />
         </motion.a>
 
         <nav className="flex items-center gap-6 md:gap-8">

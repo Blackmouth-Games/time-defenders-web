@@ -65,7 +65,7 @@ const FeaturesSection = () => {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-game-title text-4xl md:text-5xl text-foreground mb-4">
+          <h2 className="text-section-title text-4xl md:text-5xl mb-4">
             GAME FEATURES
           </h2>
           <p className="text-foreground/80 text-lg max-w-2xl mx-auto font-medium">
