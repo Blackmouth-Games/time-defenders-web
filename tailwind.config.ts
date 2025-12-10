@@ -14,8 +14,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        bangers: ["Bangers", "cursive"],
-        nunito: ["Nunito", "sans-serif"],
+        industry: ["Industry", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -107,6 +106,12 @@ export default {
           "0%, 100%": { transform: "rotate(-3deg)" },
           "50%": { transform: "rotate(3deg)" },
         },
+        "float-rotate": {
+          "0%, 100%": { transform: "translateY(0) rotate(0deg)" },
+          "25%": { transform: "translateY(-15px) rotate(5deg)" },
+          "50%": { transform: "translateY(-25px) rotate(0deg)" },
+          "75%": { transform: "translateY(-15px) rotate(-5deg)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -115,6 +120,7 @@ export default {
         "scale-pulse": "scale-pulse 2s ease-in-out infinite",
         "spin-slow": "spin-slow 20s linear infinite",
         wiggle: "wiggle 1s ease-in-out infinite",
+        "float-rotate": "float-rotate 4s ease-in-out infinite",
       },
     },
   },

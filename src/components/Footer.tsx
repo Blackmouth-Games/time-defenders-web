@@ -22,11 +22,17 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="relative py-16 border-t border-border/30">
+    <footer className="relative py-16 border-t border-border/30 bg-background/80 backdrop-blur-sm">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
           {/* Logo & Info */}
-          <div className="flex flex-col items-center md:items-start gap-4">
+          <motion.div 
+            className="flex flex-col items-center md:items-start gap-4"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+          >
             <div className="flex items-center gap-3">
               <img src={symbolWhite} alt="Domenation" className="w-12 h-12" />
               <div>
@@ -43,38 +49,53 @@ const Footer = () => {
                 href="https://blackmouthgames.com/" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="text-primary hover:underline"
+                className="text-primary hover:underline font-bold"
               >
                 Blackmouth Games
               </a>
             </p>
-          </div>
+          </motion.div>
 
           {/* Social Links */}
-          <div className="flex items-center gap-4">
-            {socialLinks.map((social) => (
+          <motion.div 
+            className="flex items-center gap-4"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            {socialLinks.map((social, index) => (
               <motion.a
                 key={social.label}
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ scale: 1.1, y: -2 }}
+                whileHover={{ scale: 1.15, y: -3 }}
                 whileTap={{ scale: 0.95 }}
-                className="w-12 h-12 rounded-full bg-muted flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground transition-colors"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 * index }}
+                className="w-12 h-12 rounded-full bg-muted flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground transition-colors shadow-lg"
                 aria-label={social.label}
               >
                 <social.icon className="w-5 h-5" />
               </motion.a>
             ))}
-          </div>
+          </motion.div>
         </div>
 
         {/* Bottom */}
-        <div className="mt-12 pt-8 border-t border-border/20 text-center">
-          <p className="text-muted-foreground text-sm">
+        <motion.div 
+          className="mt-12 pt-8 border-t border-border/20 text-center"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          viewport={{ once: true }}
+        >
+          <p className="text-muted-foreground text-sm font-medium">
             © 2023 Blackmouth Games. All Rights Reserved.
           </p>
-        </div>
+        </motion.div>
       </div>
     </footer>
   );
