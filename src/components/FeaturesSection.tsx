@@ -34,12 +34,12 @@ const FeaturesSection = () => {
   ];
 
   return (
-    <section id="features" ref={ref} className="relative py-24 overflow-hidden">
+    <section id="features" ref={ref} className="relative py-16 md:py-24 overflow-hidden">
       {/* Floating decorations */}
       <motion.img 
         src={gearIcon}
         alt=""
-        className="absolute top-10 left-10 w-20 h-20 opacity-40 hidden lg:block"
+        className="absolute top-10 left-10 w-16 md:w-20 h-16 md:h-20 opacity-40 hidden lg:block"
         animate={{ rotate: 360 }}
         transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
       />
@@ -47,12 +47,12 @@ const FeaturesSection = () => {
       {/* Background decoration */}
       <div className="absolute inset-0 opacity-20">
         <motion.div 
-          className="absolute top-0 left-0 w-96 h-96 bg-primary rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"
+          className="absolute top-0 left-0 w-64 md:w-96 h-64 md:h-96 bg-primary rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"
           animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.3, 0.2] }}
           transition={{ duration: 5, repeat: Infinity }}
         />
         <motion.div 
-          className="absolute bottom-0 right-0 w-96 h-96 bg-secondary rounded-full blur-3xl translate-x-1/2 translate-y-1/2"
+          className="absolute bottom-0 right-0 w-64 md:w-96 h-64 md:h-96 bg-secondary rounded-full blur-3xl translate-x-1/2 translate-y-1/2"
           animate={{ scale: [1.2, 1, 1.2], opacity: [0.2, 0.3, 0.2] }}
           transition={{ duration: 6, repeat: Infinity, delay: 1 }}
         />
@@ -60,22 +60,22 @@ const FeaturesSection = () => {
 
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-10 md:mb-16"
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-section-title text-4xl md:text-5xl mb-4">
+          <h2 className="text-section-title text-3xl md:text-4xl lg:text-5xl mb-3 md:mb-4">
             GAME FEATURES
           </h2>
-          <p className="text-foreground/80 text-lg max-w-2xl mx-auto font-medium">
+          <p className="text-foreground/80 text-base md:text-lg max-w-2xl mx-auto font-medium px-2">
             Whether you're a casual player or a strategic mastermind, Time Defenders offers 
             fun, action-packed gameplay that keeps you coming back for more.
           </p>
         </motion.div>
 
         {/* Screenshots with WHITE CARD style */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-8">
           {screenshots.map((item, index) => (
             <motion.div
               key={item.title}
@@ -86,7 +86,7 @@ const FeaturesSection = () => {
               className="group cursor-pointer"
             >
               {/* White card container */}
-              <div className="relative bg-gradient-to-br from-white via-slate-50 to-slate-100 rounded-2xl p-3 shadow-2xl border-2 border-white/50 overflow-hidden">
+              <div className="relative bg-gradient-to-br from-white via-slate-50 to-slate-100 rounded-xl md:rounded-2xl p-2 md:p-3 shadow-2xl border-2 border-white/50 overflow-hidden">
                 {/* Animated shimmer effect */}
                 <motion.div
                   className="absolute inset-0 bg-gradient-to-r from-transparent via-white/70 to-transparent -skew-x-12 z-20 pointer-events-none"

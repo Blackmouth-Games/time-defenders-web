@@ -45,35 +45,35 @@ const RewardsSection = () => {
   ];
 
   return (
-    <section id="rewards" ref={ref} className="relative py-24 overflow-hidden">
+    <section id="rewards" ref={ref} className="relative py-16 md:py-24 overflow-hidden">
       {/* Floating hourglass decoration */}
       <motion.img 
         src={hourglass}
         alt=""
-        className="absolute top-20 right-20 w-16 h-16 opacity-50 hidden lg:block"
+        className="absolute top-20 right-20 w-12 md:w-16 h-12 md:h-16 opacity-50 hidden lg:block"
         animate={{ y: [0, -15, 0], rotate: [0, -5, 5, 0] }}
         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
       />
 
       <div className="container mx-auto px-4">
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-10 md:mb-16"
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-section-title text-4xl md:text-5xl mb-4">
+          <h2 className="text-section-title text-3xl md:text-4xl lg:text-5xl mb-3 md:mb-4">
             EARN REWARDS
           </h2>
-          <p className="text-foreground/80 text-lg max-w-2xl mx-auto font-medium">
+          <p className="text-foreground/80 text-base md:text-lg max-w-2xl mx-auto font-medium px-2">
             Play, complete quests, and climb the leaderboards to earn amazing rewards!
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8 items-center">
           {/* Left - Chest Image */}
           <motion.div
-            className="flex justify-center"
+            className="flex justify-center order-2 lg:order-1"
             initial={{ opacity: 0, x: -50, rotate: -10 }}
             animate={isInView ? { opacity: 1, x: 0, rotate: 0 } : {}}
             transition={{ duration: 0.8 }}
@@ -81,7 +81,7 @@ const RewardsSection = () => {
             <motion.img 
               src={chest} 
               alt="Treasure Chest" 
-              className="w-40 h-40 md:w-48 md:h-48 object-contain drop-shadow-lg"
+              className="w-28 h-28 md:w-40 md:h-40 lg:w-48 lg:h-48 object-contain drop-shadow-lg"
               animate={{ y: [0, -15, 0] }}
               transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
               whileHover={{ scale: 1.1, rotate: 5 }}
@@ -89,7 +89,7 @@ const RewardsSection = () => {
           </motion.div>
 
           {/* Center - Rewards Grid - NOW WITH WHITE CARDS */}
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-3 md:gap-4 order-1 lg:order-2">
             {rewards.map((reward, index) => (
               <motion.div
                 key={reward.title}
@@ -164,7 +164,7 @@ const RewardsSection = () => {
 
           {/* Right - Gems Cart Image */}
           <motion.div
-            className="flex justify-center"
+            className="flex justify-center order-3"
             initial={{ opacity: 0, x: 50, rotate: 10 }}
             animate={isInView ? { opacity: 1, x: 0, rotate: 0 } : {}}
             transition={{ duration: 0.8 }}
@@ -172,7 +172,7 @@ const RewardsSection = () => {
             <motion.img 
               src={gemsCart} 
               alt="Gems Cart" 
-              className="w-40 h-40 md:w-48 md:h-48 object-contain drop-shadow-lg"
+              className="w-28 h-28 md:w-40 md:h-40 lg:w-48 lg:h-48 object-contain drop-shadow-lg"
               animate={{ y: [0, -12, 0] }}
               transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
               whileHover={{ scale: 1.1, rotate: -5 }}
