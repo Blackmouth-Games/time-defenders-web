@@ -14,25 +14,33 @@ const RewardsSection = () => {
       icon: Gem,
       title: "Daily Gems",
       description: "Collect free gems every day",
-      value: "+10"
+      value: "+10",
+      badgeColor: "bg-green-500",
+      iconColor: "text-yellow-500"
     },
     {
       icon: Gift,
       title: "Lucky Chests",
       description: "Open chests for rare items",
-      value: "RARE"
+      value: "RARE",
+      badgeColor: "bg-secondary",
+      iconColor: "text-yellow-500"
     },
     {
       icon: Star,
       title: "Leaderboard Prizes",
       description: "Top players earn exclusive rewards",
-      value: "TOP 100"
+      value: "TOP 100",
+      badgeColor: "bg-pink-500",
+      iconColor: "text-yellow-400"
     },
     {
       icon: Sparkles,
       title: "Special Events",
       description: "Participate in limited-time events",
-      value: "NEW"
+      value: "NEW",
+      badgeColor: "bg-green-400",
+      iconColor: "text-yellow-400"
     }
   ];
 
@@ -80,34 +88,76 @@ const RewardsSection = () => {
             />
           </motion.div>
 
-          {/* Center - Rewards Grid */}
+          {/* Center - Rewards Grid - NOW WITH WHITE CARDS */}
           <div className="grid grid-cols-2 gap-4">
             {rewards.map((reward, index) => (
               <motion.div
                 key={reward.title}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                initial={{ opacity: 0, scale: 0.8, y: 30 }}
+                animate={isInView ? { opacity: 1, scale: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
-                whileHover={{ scale: 1.08, y: -8 }}
-                className="card-game p-5 text-center group cursor-pointer"
+                whileHover={{ scale: 1.08, y: -10 }}
+                className="relative group cursor-pointer"
               >
-                <div className="relative inline-block mb-3">
+                {/* White/Light card with gradient border */}
+                <div className="relative bg-gradient-to-br from-white via-slate-50 to-slate-100 rounded-2xl p-5 text-center shadow-xl border-2 border-white/50 overflow-hidden">
+                  {/* Animated shimmer effect */}
                   <motion.div
-                    whileHover={{ rotate: [0, -15, 15, 0] }}
-                    transition={{ duration: 0.5 }}
-                  >
-                    <reward.icon className="w-10 h-10 text-primary" />
-                  </motion.div>
-                  <motion.span
-                    className="absolute -top-2 -right-2 bg-gem-pink text-xs text-foreground font-bold px-2 py-0.5 rounded-full"
-                    animate={{ scale: [1, 1.1, 1] }}
-                    transition={{ repeat: Infinity, duration: 2 }}
-                  >
-                    {reward.value}
-                  </motion.span>
+                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/60 to-transparent -skew-x-12"
+                    initial={{ x: "-100%" }}
+                    animate={{ x: "200%" }}
+                    transition={{ 
+                      duration: 2, 
+                      repeat: Infinity, 
+                      repeatDelay: 3,
+                      ease: "easeInOut",
+                      delay: index * 0.5 
+                    }}
+                  />
+                  
+                  {/* Glow effect on hover */}
+                  <motion.div 
+                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"
+                    style={{
+                      boxShadow: "inset 0 0 30px hsl(45 100% 55% / 0.3), 0 0 40px hsl(45 100% 55% / 0.2)"
+                    }}
+                  />
+                  
+                  <div className="relative z-10">
+                    {/* Badge */}
+                    <motion.span
+                      className={`absolute -top-1 right-2 ${reward.badgeColor} text-xs text-white font-bold px-2 py-1 rounded-full shadow-lg`}
+                      animate={{ scale: [1, 1.15, 1] }}
+                      transition={{ repeat: Infinity, duration: 2, delay: index * 0.3 }}
+                    >
+                      {reward.value}
+                    </motion.span>
+                    
+                    {/* Icon with animation */}
+                    <motion.div
+                      className="mb-3 flex justify-center"
+                      whileHover={{ rotate: [0, -15, 15, 0], scale: 1.2 }}
+                      transition={{ duration: 0.5 }}
+                    >
+                      <motion.div
+                        animate={{ 
+                          y: [0, -5, 0],
+                        }}
+                        transition={{ 
+                          duration: 2, 
+                          repeat: Infinity, 
+                          ease: "easeInOut",
+                          delay: index * 0.2 
+                        }}
+                      >
+                        <reward.icon className={`w-10 h-10 ${reward.iconColor} drop-shadow-md`} strokeWidth={1.5} />
+                      </motion.div>
+                    </motion.div>
+                    
+                    <h3 className="font-bold text-slate-800 mb-1 text-sm md:text-base">{reward.title}</h3>
+                    <p className="text-slate-600 text-xs md:text-sm">{reward.description}</p>
+                  </div>
                 </div>
-                <h3 className="font-bold text-foreground mb-1">{reward.title}</h3>
-                <p className="text-muted-foreground text-sm">{reward.description}</p>
               </motion.div>
             ))}
           </div>
